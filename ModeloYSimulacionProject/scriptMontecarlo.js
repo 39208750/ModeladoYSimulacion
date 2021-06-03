@@ -1,4 +1,4 @@
-(function (document, window) {
+(function (document) {
 
     const layout = {
         autosize: true,

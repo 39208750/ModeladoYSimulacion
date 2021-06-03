@@ -1,20 +1,17 @@
-/*
- * Globals
- */
 
 
-/* Custom default button */
+
+/* boton por default */
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
+  color: rgb(243, 236, 236);
+  text-shadow: black; 
+  background-color: red;
 }
 
 
-/*
- * Base structure
- */
+/*Estructura base*/
 
 body {
   text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
@@ -26,15 +23,13 @@ body {
 }
 
 
-/*
- * Header
- */
+/* Header */
 
 .nav-masthead .nav-link {
   padding: .25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, .5);
-  background-color: transparent;
+  color: rgba(226, 31, 31, 0.5);
+  background-color: red;
   border-bottom: .25rem solid transparent;
 }
 
@@ -48,6 +43,6 @@ body {
 }
 
 .nav-masthead .active {
-  color: #fff;
-  border-bottom-color: #fff;
+  color: rgb(228, 23, 23);
+  border-bottom-color: rgb(24, 23, 23);
 }
