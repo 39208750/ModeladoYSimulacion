@@ -8,10 +8,11 @@
         yaxis: {
             title: 'x'
         }
+        
     };
 
     document.addEventListener("DOMContentLoaded", function () {
-        // Empty graphic as default
+        // Grafico Vacio
         Plotly.newPlot('plot', [{x:[0], y:[0], type: 'scatter'}], layout);
 
         var btnCalcular = document.getElementById("calcular");
@@ -25,21 +26,20 @@
             var N = parseFloat(document.getElementById("N").value);
             var h = (tf - t0) / N;
 
-            //Warming Up: To time-consistent data
             funcion.evaluate({ t: 0, x: 0 });
 
-            // Obtaining the data
+            
             var eulerData = euler(funcion, x0, t0, tf, h);
-            var improvedEulerData = improvedEuler(funcion, x0, t0, tf, h);
+            var EluerMejoradoData = eulerMejorado(funcion, x0, t0, tf, h);
             var rungeKuttaData = rungeKutta(funcion, x0, t0, tf, h);
 
-            Plotly.newPlot('plot', [eulerData, improvedEulerData, rungeKuttaData], layout);
+            Plotly.newPlot('plot', [eulerData, EluerMejoradoData, rungeKuttaData], layout);
             document.querySelector('[data-title="Autoscale"]').click();
         };
     });
 
     // Euler
-    function getImprovedEuler(funcion, xinicial, tinicial, tfinal, h) {
+    function getEulerMejorado(funcion, xinicial, tinicial, tfinal, h) {
         var data = { name: 'Euler', x: [], y: [], type: 'scatter' };
 
         var x = xinicial;
@@ -60,7 +60,7 @@
     }
 
     // Improved Euler
-    function getImprovedEulerData(funcion, xinicial, tinicial, tfinal, h) {
+    function getEulerMejoradoData(funcion, xinicial, tinicial, tfinal, h) {
         var data = { name: 'Euler Mejorado', x: [], y: [], type: 'scatter' };
 
         var x = xinicial;
@@ -117,14 +117,14 @@
 
     function euler(funcion, x0, t0, tf, h) {
         var data = {};
-        if (document.getElementById("eulerCheck").checked) data = getImprovedEuler(funcion, x0, t0, tf, h);
+        if (document.getElementById("eulerCheck").checked) data = getEulerMejorado(funcion, x0, t0, tf, h);
 
         return data;
     }
 
-    function improvedEuler(funcion, x0, t0, tf, h) {
+    function eulerMejorado(funcion, x0, t0, tf, h) {
         var data = {};
-        if (document.getElementById("eulerMejoradoCheck").checked) data = getImprovedEulerData(funcion, x0, t0, tf, h);
+        if (document.getElementById("eulerMejoradoCheck").checked) data = getEulerMejoradoData(funcion, x0, t0, tf, h);
 
         return data;
     }
